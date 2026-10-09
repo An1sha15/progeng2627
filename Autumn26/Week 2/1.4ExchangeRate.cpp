@@ -1,7 +1,7 @@
 #include <iostream>
 
 int main() {
-    double pounds, exRate, euros;;
+    double pounds, exRate, euros;
     std::cout<<"Enter amount of money: " << std::endl;
     std:: cin>>pounds;
 
