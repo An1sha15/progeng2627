@@ -1,0 +1,6 @@
+strawberries
+apples
+watermelons
+blackberries
+lemons
+pears/Users/anishaatri/Documents/Programming_for_Engineers/Autumn26/Week6/warehouse1.txt
