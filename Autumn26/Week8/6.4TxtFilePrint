@@ -1,0 +1,33 @@
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <vector>
+#include <string> 
+
+//Task:Write a program which accepts one command line argument representing a text file
+// (or a .cpp file, which is a form of text file) and prints its content on the screen.
+
+// argc is the number of command line arguments
+// argv is an array of C-style strings
+// we'll see what this means more in detail later on
+
+int main(int argc, char* argv[]){
+    std::vector<std::string> v;
+
+
+    std::ifstream infile;
+  
+
+    for(int i = 0; i < argc; i++){
+        infile.open(argv[i]);
+        std::string tmp;
+        while(infile >> tmp){
+            v.push_back(tmp); 
+            std::cout << v[i] << std::endl;
+        }
+    }
+
+ 
+
+
+}
