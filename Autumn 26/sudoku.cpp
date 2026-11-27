@@ -146,9 +146,9 @@ void get_subsq(int subs, const std::vector<int>& in, std::vector<int>& out){
 
     int subs_side_len = sqrt(sqrt(in.size()));
     int side_len = sqrt(in.size());
-    int init_row = (subs\subs_side_len)*subs_side_len;
+    int init_row = ((subs/subs_side_len)*subs_side_len);
      //number of subsqaures per row = side length of subsquares so i have saved using anohter variable here although technically my intention is to int divide by the number of subsqaures per row
-    int init_col = (subs%subs_side_len)*subs_side_len;
+    int init_col = ((subs%subs_side_len)*subs_side_len);
 
     for (int i = 0; i<subs_side_len; i++){
         for (int j = 0; j< subs_side_len; j++){
@@ -156,7 +156,7 @@ void get_subsq(int subs, const std::vector<int>& in, std::vector<int>& out){
             out.push_back(index);
         }
     }
-
+}
 
 
 // function valid_sudoku 
@@ -199,7 +199,6 @@ bool valid_sudoku(const std::vector<int>& g){
         }
     }
 
-    
 
     // if the program execution gets to here it means that 
     // it hasn't executed a "return false" above
@@ -262,5 +261,6 @@ int main(int argc, char* argv[]){
     else{
         std::cout << "not valid" << std::endl; 
     }
+
 
 }
