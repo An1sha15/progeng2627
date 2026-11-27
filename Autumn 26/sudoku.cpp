@@ -45,7 +45,7 @@ int mfind(int n, const std::vector<int>& v){
             index = i;
         }
     }
-    return index
+    return index;
 }
 
 //DONE
@@ -61,12 +61,12 @@ int mfind(int n, const std::vector<int>& v){
 // note that check_sequence must (meaningfully) use function mfind
 bool check_sequence(const std::vector<int>& v){
     for (int i =1; i<=v.size(); i++){
-        if (mfind(i)==-1){
+        if (mfind(i, v)==-1){
             return false;
 
         }  
     }
-    return true
+    return true;
  
 }
 
@@ -84,7 +84,7 @@ bool check_sequence(const std::vector<int>& v){
 void get_row(int r, const std::vector<int>& in, std::vector<int>& out){
     //so i'd take the sqrt of the length of the sudoku vector and  that is the side_len input for 2D->1D func. col number would go from 0 to side_len since it should be a square 
     int side_len  = sqrt(in.size());
-    for (int i ==0; i < side_len; i++){
+    for (int i =0; i < side_len; i++){
         int index = twod_to_oned(r, i,side_len);
         out.push_back(in[index]);
     }
@@ -100,9 +100,9 @@ void get_row(int r, const std::vector<int>& in, std::vector<int>& out){
 // note that this function must (meaningfully) use function twod_to_oned
 void get_col(int c, const std::vector<int>& in, std::vector<int>& out){
     // similar to getitng a row, except the row and colum swap places
-    in side_len = sqrt(in.size());
+    int side_len = sqrt(in.size());
     for (int i=0; i<side_len; i++){
-        int index = towd_to_oned(i, c, side_len);
+        int index = twod_to_oned(i, c, side_len);
         out.push_back(in[index]);
     }
 }
@@ -126,26 +126,33 @@ void get_subsq(int subs, const std::vector<int>& in, std::vector<int>& out){
     //if sub 1; row = 0,1; col = 2,3
     //if subs 2, row = 2,3; col =0,1
     //if subs 3, row = 2,3; col = 2,3
+    // The number of subsqaures in a row must be equal to the side length of a subsqaure (due to square relationship)
+    // 
+    // to find a subsqaure:
+    // first locate which row and column im starting the for loop from. 
+    // Then do nested for loops,  starting row (starting col; starting col + j)... while j<subsqaure side length
+    // go onto next row and repeat. (i.e j offsets the starting column for each row and i will offset the starting row)
+
+    //How to find starting starting rwo and column
+    // FOR WOKRING DELETE LATER
+    // subs      init_row      init_col
+    // 0            0             0
+    // 1            0             2
+    // 2            2             0
+    // 3            2             2
+    // init_row uses int div
+    // init_col uses modulo
+    // and then times by 2?? or subsquare side length?
+
     int subs_side_len = sqrt(sqrt(in.size()));
 
-    for (int i= 0; i <subs_side_len; i++){
-        for(int j=0; j<subs_side_len; j++)
-            int index = twod_to_oned(i, subs, subs_side_len);
-            out.push_back(in[index]);
-    }
 
-
-
-
-
-}
 
 // function valid_sudoku 
 // takes in input:
 // - a one dimensional vector representing a sudoku
 // returns:
 // - a boolean which is true if the sudoku is valid and false if it isn't valid
-
 // write your code where indicated
 // i.e. within the two remaining incomplete 'for' loops
 // do not alter anything else
@@ -177,8 +184,10 @@ bool valid_sudoku(const std::vector<int>& g){
         seq.clear();
         get_subsq(i, g, seq);
         if(!check_sequence(seq)){
-            return false
+            return false;
         }
+    }
+
     
 
     // if the program execution gets to here it means that 
