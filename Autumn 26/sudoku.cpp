@@ -153,7 +153,7 @@ void get_subsq(int subs, const std::vector<int>& in, std::vector<int>& out){
     for (int i = 0; i<subs_side_len; i++){
         for (int j = 0; j< subs_side_len; j++){
             int index = twod_to_oned((init_row+i), (init_col +j), side_len);
-            out.push_back(index);
+            out.push_back(in[index]);
         }
     }
 }
