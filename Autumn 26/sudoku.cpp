@@ -109,7 +109,7 @@ void get_col(int c, const std::vector<int>& in, std::vector<int>& out){
 
 
 
-//NOT DONE
+// DONE - DELETE SOME OF THE COMMENTS THOUGH!!!
 // function get_subsq
 // like the two functions above but for subsquares
 // we consider subsquares to be indexed from left to right
@@ -145,6 +145,17 @@ void get_subsq(int subs, const std::vector<int>& in, std::vector<int>& out){
     // and then times by 2?? or subsquare side length?
 
     int subs_side_len = sqrt(sqrt(in.size()));
+    int side_len = sqrt(in.size());
+    int init_row = (subs\subs_side_len)*subs_side_len;
+     //number of subsqaures per row = side length of subsquares so i have saved using anohter variable here although technically my intention is to int divide by the number of subsqaures per row
+    int init_col = (subs%subs_side_len)*subs_side_len;
+
+    for (int i = 0; i<subs_side_len; i++){
+        for (int j = 0; j< subs_side_len; j++){
+            int index = twod_to_oned((init_row+i), (init_col +j), side_len);
+            out.push_back(index);
+        }
+    }
 
 
 
