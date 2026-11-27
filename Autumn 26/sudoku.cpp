@@ -168,7 +168,7 @@ void get_subsq(int subs, const std::vector<int>& in, std::vector<int>& out){
 // i.e. within the two remaining incomplete 'for' loops
 // do not alter anything else
 
-std::string valid_sudoku(const std::vector<int>& g){
+bool valid_sudoku(const std::vector<int>& g){
     int side = std::sqrt(g.size()); 
     std::vector<int> seq;
 
@@ -177,7 +177,7 @@ std::string valid_sudoku(const std::vector<int>& g){
         seq.clear();
         get_row(i, g, seq);
         if(!check_sequence(seq)){ 
-            return "row false";
+            return false;
         }
     }
 
@@ -186,7 +186,7 @@ std::string valid_sudoku(const std::vector<int>& g){
         seq.clear();
         get_col(i, g, seq);
         if(!check_sequence(seq)){
-            return " col false";
+            return false;
         }
     }
 
@@ -195,7 +195,7 @@ std::string valid_sudoku(const std::vector<int>& g){
         seq.clear();
         get_subsq(i, g, seq);
         if(!check_sequence(seq)){
-            return "subsq false";
+            return false;
         }
     }
 
@@ -204,7 +204,7 @@ std::string valid_sudoku(const std::vector<int>& g){
     // it hasn't executed a "return false" above
     // so the sudoku is valid:
 
-    return "true";
+    return true;
 }
 
 int main(int argc, char* argv[]){
@@ -255,12 +255,12 @@ int main(int argc, char* argv[]){
 
     bool valid = valid_sudoku(s);
 
- /*  if(valid){
+    if(valid){
         std::cout << "valid" << std::endl;
     }
     else{
         std::cout << "not valid" << std::endl; 
     }
 
-*/
+
 }
