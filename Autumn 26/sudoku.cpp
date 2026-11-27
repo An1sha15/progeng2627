@@ -134,15 +134,15 @@ void get_subsq(int subs, const std::vector<int>& in, std::vector<int>& out){
     // go onto next row and repeat. (i.e j offsets the starting column for each row and i will offset the starting row)
 
     //How to find starting starting rwo and column
-    // FOR WOKRING DELETE LATER
+    // FOR WORKING DELETE LATER
     // subs      init_row      init_col
     // 0            0             0
     // 1            0             2
     // 2            2             0
     // 3            2             2
     // init_row uses int div
-    // init_col uses modulo
-    // and then times by 2?? or subsquare side length?
+    // init_col uses modulo div
+    // and then times by 2?? or subsq square side length?
 
     int subs_side_len = sqrt(sqrt(in.size()));
     int side_len = sqrt(in.size());
