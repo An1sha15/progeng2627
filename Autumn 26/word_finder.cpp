@@ -5,7 +5,7 @@
 
 //each row is an index of the vector 'grid' 
 //each column in the csame index of each string in the vector 'grid'
-// 
+
 
 // Get row of grid
 void get_row(int r, const std::vector<std::string>& grid, std::string& out){
@@ -38,19 +38,15 @@ void check_string(const std::string& s, std::vector<std::string>&  out, const st
             while (j<words[i].size() && s[j] == words[i][j]){
                 j++;
             }
-                if (j==words[i].size()){
-                    out.push_back(words[i]);
-                }        
-                else{
-                out.push_back('#')
-                }
+            if (j==words[i].size()){
+                out.push_back(words[i]);
+            }        
 
-        else{
-            out.push_back('#')
+                
         }
     }
-    }
 }
+
 void find_words(
     const std::vector<std::string>& grid, 
     const std::vector<std::string>& words,
@@ -65,7 +61,7 @@ void find_words(
 
     }
 
-    for (int j=0; j<grid[i].size(); j++){
+    for (int j=0; j<grid[j].size(); j++){
         std::string col;
         get_row(j, grid, col);
         check_string(col, solution, words);
@@ -73,12 +69,10 @@ void find_words(
 
     }
 
-  
-
-
-
 
 }
+
+// 
 // EXAMPLE MAIN - REWRITE LATER
 
    int main(){
@@ -97,7 +91,10 @@ void find_words(
     std::vector<std::string> not_found;
 
     find_words(grid, words, solution, not_found); 
-
+    for(int i=0; i<solution.size();i++){
+        std::cout<<solution[i]<<std::endl;
+    }
+/*
     std::vector<std::string> expected_solution = {
         "#apple#",
         "##e####",
@@ -125,5 +122,5 @@ void find_words(
     for(int i = 0; i < not_found.size(); i++){
         std::cout << not_found[i] << std::endl;
     }
-
+*/
 } 
