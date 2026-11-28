@@ -7,45 +7,37 @@
 //each column in the csame index of each string in the vector 'grid'
 
 
-// Get row of grid
+// Get row of grid as a string
 void get_row(int r, const std::vector<std::string>& grid, std::string& out){
     int len = grid[0].size();
     for (int i=0; i<len; i++){
-        out.push_back(grid[r][i]);
+        out += (grid[r][i]);
     }
 }
 
-// Get column of grid
+// Get column of grid as a stirng
 void get_col(int c, const std::vector<std::string>& grid, std::string& out){
     int len = grid.size();      //num of rows must be num of strings
     for (int i=0; i<len; i++){
-        out.push_back(grid[i][c]);
+        out += (grid[i][c]);
     }
 }
 
-// Find words in the grid
-// words not found  can be stored in a vector that compares everything in the found vector to original lsit of search words
-
-//Check string for words
-void check_string(const std::string& s, std::vector<std::string>&  out, const std::vector<std::string>& words){
-    // s will be a row or a column of the grid
-    for (int i =0; i<s.size(); i++){
-        if (s[i] == words[i][0]){
-//Checking if a word matches
-// Use while to keep a counter (j) going of low long the letters of the row/col == the letter od the word
-//If counter is equal to length of words[i] then word found!! :)
-            int j = 0;
-            while (j<words[i].size() && s[j] == words[i][j]){
-                j++;
-            }
-            if (j==words[i].size()){
-                out.push_back(words[i]);
-            }        
-
-                
-        }
+// Get Substring 
+void get_substr(const std::string& s, const int& len, const int& init_index, std::string& substr){
+    // s is a row/column ; len is the length of required substring; init_index is the the index at which the substring starts
+    for(int i=0; i< len; i++){
+        substr += (s[init_index +i]);
     }
 }
+
+
+//Search function
+void search_seq(const std::string& s, std::vector<std::string> words, )
+ // s is a row/column; 
+
+
+
 
 void find_words(
     const std::vector<std::string>& grid, 
@@ -53,22 +45,7 @@ void find_words(
     std::vector<std::string>& solution,
     std::vector<std::string>& not_found
 ){
-    for (int i=0; i<grid.size(); i++){
-        std::string row;
-
-        get_row(i, grid, row);
-        check_string(row, solution, words);
-
-    }
-
-    for (int j=0; j<grid[j].size(); j++){
-        std::string col;
-        get_row(j, grid, col);
-        check_string(col, solution, words);
-    
-
-    }
-
+ 
 
 }
 
